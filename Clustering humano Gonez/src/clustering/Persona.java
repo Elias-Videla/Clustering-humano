@@ -1,6 +1,7 @@
 package clustering;
 
-public class Persona {
+public class Persona 
+{
 
 	private int interesDeporte;
 	private int interesMusica;
@@ -43,6 +44,6 @@ public class Persona {
 			throw new IllegalArgumentException( "Numero fuera de rango (del 1 al 5) " + i_espectaculo );
 		
 		if( i_ciencia < 1 || i_ciencia > 5)
-			throw new IllegalArgumentException( "Numero fuera de rango (del 1 al 5)" + i_ciencia );
+			throw new IllegalArgumentException( "Numero fuera de rango (del 1 al 5) " + i_ciencia );
 	}
 }
