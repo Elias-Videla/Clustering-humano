@@ -1,8 +1,7 @@
 package clustering;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+
 
 public class Grafo 
 {
@@ -11,7 +10,6 @@ public class Grafo
 	private int [][] A;
 
 	
-	//la cantidad de vertices esta predeterminada desde el constructor
 	public Grafo(int vertices)  
 	{
 		A = new int [vertices][vertices];
@@ -26,7 +24,6 @@ public class Grafo
 	}
 
 	
-	//Agregado de aristas
 	public void agregarArista(int i, int j, int peso) 
 	{
 		verificarVerticeValido(i);
@@ -38,8 +35,6 @@ public class Grafo
 	}
 
 
-
-	//Informa si existe la arista especificada
 	public boolean existeArista(int i , int j) 
 	{
 		verificarVerticeValido(i);
@@ -76,7 +71,17 @@ public class Grafo
 	}
 	
 	
-	//--------------------------------------------------------------------------------------------
+	public void eliminarArista(int i, int j) 
+	{
+		verificarVerticeValido(i);
+		verificarVerticeValido(j);
+		verificarDistintos(i, j);
+
+		A[i][j] = -1;  //no me deja poner null
+		A[j][i] = -1;
+	}
+	
+	//Metodos privados-----------------------------------------------------------------------------------------
 	private void verificarVerticeValido(int i) {
 		if(i < 0 )
 			throw new IllegalArgumentException("El vertice no puede ser negativo: " + i);

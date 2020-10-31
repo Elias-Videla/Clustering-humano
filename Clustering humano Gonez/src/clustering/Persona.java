@@ -37,6 +37,24 @@ public class Persona
 	public int interesEspectaculo() { return interesEspectaculo; }
 	
 	
+	public static int calcularIndiceSimilaridad(Persona p1, Persona p2) 
+	{
+		int i_musica      = valorAbsoluto( p1.interesMusica() - p2.interesMusica() );
+		int i_deportes    = valorAbsoluto( p1.interesDeporte() - p2.interesDeporte() );
+		int i_ciencia     = valorAbsoluto( p1.interesCiencia() - p2.interesCiencia() );
+		int i_espectaculo = valorAbsoluto( p1.interesEspectaculo() - p2.interesEspectaculo() );
+		
+		return i_musica + i_deportes + i_ciencia + i_espectaculo ;
+	}
+	
+	//Metodos privados-------------------------------------------------------------------------------------------
+	
+	private static int valorAbsoluto(int valor) 
+	{
+		return valor < 0 ? valor*(-1) : valor;
+	}
+	
+	
 	private void verificarParametros( int i_deporte, int i_musica, int i_espectaculo, int i_ciencia ) 
 	{
 		if( i_deporte < 1 || i_deporte > 5)
