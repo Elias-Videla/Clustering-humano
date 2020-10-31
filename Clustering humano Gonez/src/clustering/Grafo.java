@@ -45,7 +45,7 @@ public class Grafo
 		verificarVerticeValido(i);
 		verificarVerticeValido(j);
 		verificarDistintos(i, j);
-		return A[i][j] > 0;    //este simbolo me estaba complicando la vida jajajajajajaj :')
+		return A[i][j] >= 0;    //este simbolo me estaba complicando la vida jajajajajajaj :')
 	}
 	
 	

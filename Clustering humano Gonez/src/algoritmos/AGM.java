@@ -25,6 +25,10 @@ public class AGM
 			
 			int indice = buscarVecinoMenorPeso(vecinosPendientes, marcados); //el indice tiene la posicion del arraylist 
 																	//vecinosPendientes del vecino con menor peso
+			System.out.println("indice " + indice);
+			System.out.println("marcados " + marcados);
+			imprimirVecinos(vecinosPendientes);
+			
 			int vertice_i = vecinosPendientes.get(indice)[0];
 			int vertice_j = vecinosPendientes.get(indice)[1];
 			int peso      = vecinosPendientes.get(indice)[2];
@@ -84,6 +88,9 @@ public class AGM
 		
 		for(int i = 0; i < vecinosPendientes.size()-1; i++) 
 		{
+			System.out.println("menor " + menorPeso);
+			//si hay dos iguales toma el ultimo porque recorre toda la lista y se van pisando
+			//si quiero el primero solamente tengo que porner < y no <=
 			if(vecinosPendientes.get(i)[2] <= vecinosPendientes.get(i+1)[2]) 
 			{
 					if(vecinosPendientes.get(i)[2] <= menorPeso)
@@ -102,6 +109,18 @@ public class AGM
 			}
 		}
 		return indice;
+	}
+	
+	private static void imprimirVecinos (ArrayList<int[]> vecinosPendientes) 
+	{
+		for(int j = 0; j < vecinosPendientes.size(); j++) { 
+			int[] prueba = vecinosPendientes.get(j);
+			for(int i = 0; i < prueba.length; i++) 
+			{
+				System.out.print(prueba[i] + " ");
+			}
+			System.out.println();
+		}
 	}
 	
 }

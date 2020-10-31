@@ -7,9 +7,10 @@ public class Persona
 	private int interesMusica;
 	private int interesEspectaculo;
 	private int interesCiencia;
+	private String nombre;
 	
 	
-	public Persona( int i_deporte, int i_musica, int i_espectaculo, int i_ciencia ) 
+	public Persona( int i_deporte, int i_musica, int i_espectaculo, int i_ciencia, String nombre ) 
 	{
 		verificarParametros(i_deporte, i_musica, i_espectaculo, i_ciencia);
 		
@@ -17,7 +18,11 @@ public class Persona
 		interesMusica      =  i_musica;
 		interesEspectaculo =  i_espectaculo;
 		interesCiencia     =  i_ciencia;
+		this.nombre        =  nombre;
 	}
+	
+	
+	public String nombre() { return nombre; }
 	
 	
 	public int interesMusica() { return interesMusica; } 
