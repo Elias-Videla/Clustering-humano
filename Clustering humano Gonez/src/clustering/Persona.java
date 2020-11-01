@@ -39,7 +39,7 @@ public class Persona
 	
 	public static int calcularIndiceSimilaridad(Persona p1, Persona p2) 
 	{
-		int i_musica      = valorAbsoluto( p1.interesMusica() - p2.interesMusica() );
+		int i_musica      = valorAbsoluto( p1.interesMusica() - p2.interesMusica() ); 
 		int i_deportes    = valorAbsoluto( p1.interesDeporte() - p2.interesDeporte() );
 		int i_ciencia     = valorAbsoluto( p1.interesCiencia() - p2.interesCiencia() );
 		int i_espectaculo = valorAbsoluto( p1.interesEspectaculo() - p2.interesEspectaculo() );

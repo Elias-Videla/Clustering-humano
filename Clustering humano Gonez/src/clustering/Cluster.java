@@ -108,7 +108,7 @@ public class Cluster
 		
 		Persona elias = new Persona(3,3,1,3,"Elias");
 		Persona pepe = new Persona(5,2,4,1,"Pepe");
-		Persona carlos = new Persona(2,5,1,2,"Carlos");
+		Persona carlos = new Persona(2,5,1,2,"Carlos"); 
 		Persona juan = new Persona(1,3,1,5,"Juan");
 		Persona javier = new Persona(3,4,5,1,"Javier");
 		

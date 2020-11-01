@@ -9,35 +9,23 @@ import org.junit.Test;
 public class ClusterTest {
 
 	@Test
-	public void indiceSimilaridadCorrectaTest() 
+	public void crearGrafoConexoTest() 
 	{
-		Cluster cluster = new Cluster();
-		Persona elias = new Persona(3,3,1,3,"Elias");
-		Persona pepe = new Persona(5,2,4,1,"Pepe");
+		Persona elias  = new Persona( 3, 4, 1, 2, "Elias Gonez" );
+		Persona monk   = new Persona( 1, 2, 1, 3, "Adrian Monk" );
+		Persona santos = new Persona( 3, 4, 1, 3, "Mario Santos" ); 
+		Persona jane   = new Persona( 1, 3, 2, 4, "Patrick Jane" );
+		Persona house  = new Persona( 1, 5, 5, 5, "Greg House" );
 		
-		assertEquals(8, cluster.indiceSimilaridad(elias, pepe));
+		ArrayList<Persona> lista = new ArrayList<Persona>();
+		lista.add( monk );
+		lista.add( jane );
+		lista.add( elias );
+		lista.add( house );
+		lista.add( santos );
+		
+		Cluster cluster = new Cluster();
 	}
 
-//	@Test 
-//	public void crearGrafoAPartirDeUnaListaTest() 
-//	{
-//		Persona elias = new Persona(3,3,1,3,"Elias");
-//		Persona pepe = new Persona(5,2,4,1,"Pepe");
-//		Persona carlos = new Persona(2,5,1,2,"Carlos");
-//		Persona juan = new Persona(1,3,1,5,"Juan");
-//		Persona javier = new Persona(3,4,5,1,"Javier");
-//		
-//		ArrayList<Persona> lista = new ArrayList<Persona>();
-//		lista.add(elias);
-//		lista.add(pepe);
-//		lista.add(carlos);
-//		lista.add(juan);
-//		lista.add(javier);
-//		
-//		Cluster cluster = new Cluster();
-//		Grafo agm = new Grafo(lista.size());
-//		agm = cluster.armarAGM(cluster.crearGrafo(lista));
-//		
-//		assertEquals(8,agm.pesoDeArista(0, 1)); //creo que es -1 porque no son vecinos
-//	}
+
 }
