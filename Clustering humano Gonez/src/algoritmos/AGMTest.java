@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AGMTest {
 
 	@Test
-	public void test() {
+	public void crearAGMConexoTest() {
 		fail("Not yet implemented");
 	}
 

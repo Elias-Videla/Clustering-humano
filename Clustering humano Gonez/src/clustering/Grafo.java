@@ -1,13 +1,16 @@
 package clustering;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Grafo 
+public class Grafo implements Serializable
 {
 	//representamos el grafo por su matriz de adyacencia
 
 	private int [][] A;
+	private static final long serialVersionUID = 1L;
+
 
 	
 	public Grafo(int vertices)  

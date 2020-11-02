@@ -1,6 +1,8 @@
 package clustering;
 
-public class Persona 
+import java.io.Serializable;
+
+public class Persona implements Serializable
 {
 
 	private int interesDeporte;
@@ -8,6 +10,8 @@ public class Persona
 	private int interesEspectaculo;
 	private int interesCiencia;
 	private String nombre;
+	private static final long serialVersionUID = 1L;
+
 	
 	
 	public Persona( int i_deporte, int i_musica, int i_espectaculo, int i_ciencia, String nombre ) 

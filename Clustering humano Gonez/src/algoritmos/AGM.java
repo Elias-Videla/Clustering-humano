@@ -1,10 +1,13 @@
 package algoritmos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import clustering.Grafo;
 
-public class AGM 
+public class AGM implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+
 	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
 	public static Grafo arbolGeneradorMinimo(Grafo grafo) 
@@ -20,7 +23,7 @@ public class AGM
 		vecinosPendientes = agregarVecinosPendientes(grafo, 0, vecinosPendientes, marcados);
 		
 		
-		for(int i = 1; i < grafo.tamano(); i++) //for(int i = 1; i < grafo.tamano(); i++) 
+		for(int i = 1; i < grafo.tamano(); i++) 
 		{
 			
 			int indice = buscarVecinoMenorPeso(vecinosPendientes, marcados); //el indice tiene la posicion del arraylist 
@@ -41,6 +44,7 @@ public class AGM
 			vecinosPendientes = eliminarMarcados(grafo, vecinosPendientes, marcados);
 			//vecinosPendientes.remove(indice);
 		}
+		System.out.println("marcados " + marcados);
 		return grafoNuevo;
 	}
 	//------------------------------------------------------------------------------------------------
@@ -101,7 +105,7 @@ public class AGM
 			}
 			else 
 			{
-					if(vecinosPendientes.get(i+1)[2] <= menorPeso)
+					if(vecinosPendientes.get(i+1)[2] <= menorPeso) 
 					{
 						menorPeso = vecinosPendientes.get(i+1)[2];
 						indice = i+1;

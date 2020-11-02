@@ -1,14 +1,17 @@
 package algoritmos;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
 import clustering.Grafo;
 
-public class BFS 
+public class BFS implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 
+	
 	public static boolean esConexo(Grafo grafo) 
 	{
 		ArrayList<Integer> pendientes = new ArrayList<Integer>();

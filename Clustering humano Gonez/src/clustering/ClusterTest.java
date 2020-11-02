@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import algoritmos.BFS;
+
 public class ClusterTest {
 
 	@Test
@@ -24,7 +26,11 @@ public class ClusterTest {
 		lista.add( house );
 		lista.add( santos );
 		
+		Grafo grafo = new Grafo(lista.size());
 		Cluster cluster = new Cluster();
+		grafo = cluster.crearGrafo(lista);
+		assertTrue(BFS.esConexo(grafo));
+
 	}
 
 

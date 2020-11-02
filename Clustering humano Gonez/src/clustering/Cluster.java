@@ -1,14 +1,18 @@
 package clustering;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Set;
 
 import algoritmos.AGM;
 import algoritmos.BFS;
 
-public class Cluster
+public class Cluster implements Serializable
 {
 	private ArrayList<int[]> listaDeAristas;
 	private ArrayList<Persona> listaPersonas;
+	private static final long serialVersionUID = 1L;
+
 	
 	
 	public Cluster() 
@@ -48,6 +52,8 @@ public class Cluster
 					arista[2] = indiceSimilaridad;
 
 					listaDeAristas.add(arista);
+					System.out.println(lista_personas.get(i).nombre() + " " + lista_personas.get(j).nombre()
+							+ " " + indiceSimilaridad);
 				}
 			}
 		}
@@ -68,7 +74,7 @@ public class Cluster
 	}
 	
 	
-	public Grafo dividirGrafo(Grafo grafo) 
+	public ArrayList<Set<Integer>> dividirGrafo(Grafo grafo) //arraylist<set<Integer>>
 	{
 		if(!BFS.esConexo(grafo))
 			throw new IllegalArgumentException("El grafo no es conexo");
@@ -77,7 +83,13 @@ public class Cluster
 		
 		grafo.eliminarArista(aristaParaCortar[0], aristaParaCortar[1]);
 		
-		return grafo;
+		ArrayList<Set<Integer>> subgrafos = new ArrayList<Set<Integer>>();
+		Set<Integer> alcanzables_Subgrafo_A = BFS.alcanzables(grafo, aristaParaCortar[0]);
+		Set<Integer> alcanzables_Subgrafo_B = BFS.alcanzables(grafo, aristaParaCortar[1]);
+		subgrafos.add(alcanzables_Subgrafo_A);
+		subgrafos.add(alcanzables_Subgrafo_B);
+		
+		return subgrafos; //deberia retornar dos grafos
 	}
 
 	
@@ -123,13 +135,17 @@ public class Cluster
 		//cluster.crearGrafo(lista);
 		Grafo agm = new Grafo(lista.size());
 		agm = cluster.armarAGM(cluster.crearGrafo(lista));
-		int del = 0;
+		int del = 3;
 		System.out.println(BFS.alcanzables(agm, 0));
 		System.out.println("vecinos de " + del +agm.vecinos(del));
-		
-		cluster.dividirGrafo(agm);
+		ArrayList<Set<Integer>> subgrafos = new ArrayList<Set<Integer>>();
+		subgrafos = cluster.dividirGrafo(agm);
 		System.out.println("dividido " + BFS.alcanzables(agm, 0));
 		System.out.println("dividido " + BFS.alcanzables(agm, 4));
+		System.out.println(subgrafos.get(0) + " " + subgrafos.get(1));
+		
+		//Principal.cargar();
+		Principal.traer();
 	}
 	
 }
