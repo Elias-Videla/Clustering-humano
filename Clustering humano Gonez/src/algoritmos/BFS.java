@@ -38,9 +38,10 @@ public class BFS implements Serializable
 			return false;
 	}
 	
-	public static Set<Integer> alcanzables (Grafo grafo, int origen)
+	public static ArrayList<Integer> alcanzables (Grafo grafo, int origen)
 	{
-		Set<Integer> marcados = new HashSet<Integer>();
+		ArrayList<Integer> marcados = new ArrayList<Integer>();
+		//Set<Integer> marcados = new HashSet<Integer>();
 		ArrayList<Integer> pendientes = new ArrayList<Integer>();
 		pendientes.add(origen);
 		

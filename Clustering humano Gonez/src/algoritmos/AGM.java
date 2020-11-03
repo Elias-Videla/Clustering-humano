@@ -28,9 +28,9 @@ public class AGM implements Serializable
 			
 			int indice = buscarVecinoMenorPeso(vecinosPendientes, marcados); //el indice tiene la posicion del arraylist 
 																	//vecinosPendientes del vecino con menor peso
-			System.out.println("indice " + indice);
-			System.out.println("marcados " + marcados);
-			imprimirVecinos(vecinosPendientes);
+			//System.out.println("indice " + indice);
+			//System.out.println("marcados " + marcados);
+			//imprimirVecinos(vecinosPendientes);
 			
 			int vertice_i = vecinosPendientes.get(indice)[0];
 			int vertice_j = vecinosPendientes.get(indice)[1];
