@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.TableColumn;
 
+import clustering.Persona;
 import clustering.Principal;
 
 import javax.swing.JComboBox;
@@ -36,18 +37,20 @@ import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 import javax.imageio.ImageIO;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import java.awt.Dimension;
+import javax.swing.JRadioButton;
 
-public class Carga_manual {
+public class Carga_automatica {
 
 	public JFrame frame;
-	private JTextField textFieldNombre;
 	private JTextArea textArea;
 	private JLabel botonSalir;
 	private JLabel botonVolver;
+	private ButtonGroup botonGroup;
 
 	/**
 	 * Launch the application.
@@ -68,7 +71,7 @@ public class Carga_manual {
 	/**
 	 * Create the application.
 	 */
-	public Carga_manual() {
+	public Carga_automatica() {
 		initialize();
 	}
 
@@ -77,7 +80,7 @@ public class Carga_manual {
 	 */
 	private void initialize() {
 		Principal p = new Principal();
-		
+		botonGroup = new ButtonGroup();
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(221, 220, 197));
 		frame.setBounds(100, 100, 800, 600);
@@ -102,28 +105,6 @@ public class Carga_manual {
 		panel.setBackground(new Color(149, 137, 118));
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
-		
-		JLabel lblNombre = new JLabel("Nombre:");
-		lblNombre.setForeground(new Color(221, 220, 197));
-		lblNombre.setFont(new Font("Arial Black", Font.PLAIN, 15));
-		lblNombre.setBounds(23, 76, 96, 14);
-		panel.add(lblNombre);
-		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setMargin(new Insets(0, 2, 2, 2));
-		textFieldNombre.setBackground(new Color(221, 220, 197));
-		textFieldNombre.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyTyped(KeyEvent arg0) 
-			{
-				if (textFieldNombre.getText().length()== 12) 
-			         arg0.consume(); 
-			}
-		});
-		textFieldNombre.setFont(new Font("Arial Black", Font.PLAIN, 13));
-		textFieldNombre.setBounds(129, 73, 136, 23);
-		panel.add(textFieldNombre);
-		textFieldNombre.setColumns(10);
 		
 		
 		
@@ -153,84 +134,51 @@ public class Carga_manual {
 		lblInteresCiencia.setBounds(22, 236, 198, 20);
 		panel.add(lblInteresCiencia);
 		
-		@SuppressWarnings("rawtypes")
-		JComboBox comboBox_i_deporte = new JComboBox();
-		comboBox_i_deporte.setBackground(new Color(221, 220, 197));
-		comboBox_i_deporte.setBounds(228, 116, 37, 20);
-		panel.add(comboBox_i_deporte);
-		crearComboBox(comboBox_i_deporte);
-
-		
-		@SuppressWarnings("rawtypes")
-		JComboBox comboBox_i_musica = new JComboBox();
-		comboBox_i_musica.setBackground(new Color(221, 220, 197));
-		comboBox_i_musica.setBounds(228, 156, 37, 20);
-		panel.add(comboBox_i_musica);
-		crearComboBox(comboBox_i_musica);
-
-		
-		@SuppressWarnings("rawtypes")
-		JComboBox comboBox_i_espectaculo = new JComboBox();
-		comboBox_i_espectaculo.setBackground(new Color(221, 220, 197));
-		comboBox_i_espectaculo.setBounds(228, 196, 37, 20);
-		panel.add(comboBox_i_espectaculo);
-		crearComboBox(comboBox_i_espectaculo);
-
-		
-		@SuppressWarnings("rawtypes")
-		JComboBox comboBox_i_ciencia = new JComboBox();
-		comboBox_i_ciencia.setBackground(new Color(221, 220, 197));
-		comboBox_i_ciencia.setBounds(228, 236, 37, 20);
-		panel.add(comboBox_i_ciencia);
-		crearComboBox(comboBox_i_ciencia);
 		
 		
+		
+		
+		JRadioButton boton5personas = new JRadioButton("");
+		boton5personas.setBackground(new Color(149, 137, 118));
+		boton5personas.setBounds(226, 117, 109, 23);
+		panel.add(boton5personas);
+		botonGroup.add(boton5personas);
+		
+		JRadioButton boton10personas = new JRadioButton("");
+		boton10personas.setBackground(new Color(149, 137, 118));
+		boton10personas.setBounds(226, 157, 109, 23);
+		panel.add(boton10personas);
+		botonGroup.add(boton10personas);
+		
+		JRadioButton boton15personas = new JRadioButton("");
+		boton15personas.setBackground(new Color(149, 137, 118));
+		boton15personas.setBounds(226, 197, 109, 23);
+		panel.add(boton15personas);
+		botonGroup.add(boton15personas);
+		
+		JRadioButton boton20personas = new JRadioButton("");
+		boton20personas.setBackground(new Color(149, 137, 118));
+		boton20personas.setBounds(226, 237, 109, 23);
+		panel.add(boton20personas);
+		botonGroup.add(boton20personas);
 		
 		JButton btnAgregarPersona = new JButton("");
+		btnAgregarPersona.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0)
+			{
+				if(boton5personas.isSelected()) 
+				{
+					imprimirListaPersonas(ManejoArchivo.lista_A());
+				}
+			}
+		});
 		btnAgregarPersona.setIcon(new ImageIcon(Carga_manual.class.getResource("/imagenes/AGREGAR.png")));
 		btnAgregarPersona.setFocusPainted( false );
 		btnAgregarPersona.setBorderPainted( false );
 		btnAgregarPersona.setBackground(new Color(221, 220, 197));
-		btnAgregarPersona.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) 
-			{
-				int i_deporte     = Integer.parseInt(comboBox_i_deporte.getSelectedItem().toString());
-				int i_musica      = Integer.parseInt(comboBox_i_musica.getSelectedItem().toString());
-				int i_espectaculo = Integer.parseInt(comboBox_i_espectaculo.getSelectedItem().toString());
-				int i_ciencia     = Integer.parseInt(comboBox_i_ciencia.getSelectedItem().toString());
-				String nombre     = textFieldNombre.getText();
-				
-				if(!nombre.trim().isEmpty()) {
-					p.agregarPersona(nombre, i_deporte, i_musica, i_espectaculo, i_ciencia);
-
-					//hacer metodo para agregar el texto en el textarea
-					
-					textArea.append("" + nombre + " " + i_deporte + " " + i_musica + " " + i_espectaculo
-							+ " " + i_ciencia + " \n");
-					textFieldNombre.setText(null);
-					
-					reiniciarComboBox(comboBox_i_deporte, comboBox_i_musica, comboBox_i_espectaculo,
-							comboBox_i_ciencia);
-				}
-				else 
-				{
-					textFieldNombre.setForeground(Color.RED);
-					textFieldNombre.setText("Falta nombre");
-					textFieldNombre.addFocusListener(new FocusAdapter() {
-						@Override
-						public void focusGained(FocusEvent e) 
-						{
-							textFieldNombre.setText(null);
-							textFieldNombre.setForeground(Color.BLACK);
-						}
-					});
-				}
-			}
-		});
+	
 		btnAgregarPersona.setBounds(78, 288, 129, 36);
 		panel.add(btnAgregarPersona);
-		
-		
 		
 		JButton btnCrearGrupos = new JButton("Crear grupos");
 		btnCrearGrupos.setBounds(128, 472, 119, 23);
@@ -286,15 +234,6 @@ public class Carga_manual {
 		
 	}
 	
-	@SuppressWarnings("rawtypes")
-	private void reiniciarComboBox(JComboBox comboBox_i_deporte, JComboBox comboBox_i_musica,
-			JComboBox comboBox_i_espectaculo, JComboBox comboBox_i_ciencia) {
-		comboBox_i_ciencia.setSelectedIndex(0);
-		comboBox_i_deporte.setSelectedIndex(0);
-		comboBox_i_espectaculo.setSelectedIndex(0);
-		comboBox_i_musica.setSelectedIndex(0);
-	}
-	
 	private void imprimirGrupos(ArrayList<String> listaA, ArrayList<String> listaB) 
 	{
 		textArea.setText(null);
@@ -311,15 +250,14 @@ public class Carga_manual {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	private void crearComboBox(@SuppressWarnings("rawtypes") JComboBox cBox) 
+	@SuppressWarnings("unused")
+	private void imprimirListaPersonas(ArrayList<Persona> lista) 
 	{
-		cBox.addItem("1");
-		cBox.addItem("2");
-		cBox.addItem("3");
-		cBox.addItem("4");
-		cBox.addItem("5");
+		for(int i = 0; i < lista.size(); i++) 
+		{
+			textArea.append(lista.get(i).nombre() + " " + lista.get(i).interesDeporte() + " " + 
+					lista.get(i).interesMusica() + " " + lista.get(i).interesEspectaculo() + " " +
+					lista.get(i).interesCiencia() + "\n");
+		}
 	}
-	
-	
 }

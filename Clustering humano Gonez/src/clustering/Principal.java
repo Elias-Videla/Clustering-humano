@@ -86,25 +86,45 @@ public class Principal implements Serializable
 	
 	public static void cargar() 
 	{
-		Persona elias  = new Persona( 3, 4, 1, 2, "Elias Gonez" );
-		Persona monk   = new Persona( 1, 2, 1, 3, "Adrian Monk" );
-		Persona santos = new Persona( 3, 4, 1, 3, "Mario Santos" ); 
-		Persona jane   = new Persona( 1, 3, 2, 4, "Patrick Jane" );
-		Persona house  = new Persona( 1, 5, 5, 5, "Greg House" );
+		Persona elias    = new Persona( 3, 3, 1, 3, "Elias" );
+		Persona santiago = new Persona( 2, 5, 2, 3, "Santiago" );
+		Persona leandro  = new Persona( 5, 3, 2, 3, "Leandro" ); 
+		Persona daniela  = new Persona( 1, 5, 3, 3, "Daniela" );
+		Persona melanie  = new Persona( 1, 5, 3, 4, "Melanie" );
+		Persona enzo     = new Persona( 5, 5, 2, 5, "Enzo" );
+		Persona marcos   = new Persona( 2, 4, 3, 3, "Marcos" );
 		
-		ArrayList<Persona> lista = new ArrayList<Persona>();
-		lista.add( monk );
-		lista.add( jane );
-		lista.add( elias );
-		lista.add( house );
-		lista.add( santos );
+		
+		ArrayList<Persona> lista_A = new ArrayList<Persona>();
+		lista_A.add( santiago );
+		lista_A.add( daniela );
+		lista_A.add( elias );
+		lista_A.add( melanie );
+		lista_A.add( leandro );
+		lista_A.add( enzo );
+		lista_A.add( marcos );
+		
+		Persona nicolas = new Persona(2,4,1,3,"Nicolas.C");
+		Persona rossana = new Persona(1,1,5,3,"Rossana.G");
+		Persona daniel = new Persona(3,2,2,4,"Daniel.B");
+		Persona esteban = new Persona(5,3,3,3,"Esteban.F");
+		Persona hernan = new Persona(5,2,2,3,"Hernan.N");
+		Persona javiert = new Persona(2,4,4,4,"Javier.T");
+		Persona marta = new Persona(1,3,5,3,"Marta.S");
+		Persona jose = new Persona (4,5,2,3,"Jose.N");
+		Persona patricia = new Persona(3,2,3,4,"Patricia.B");
+		Persona javierm = new Persona(4,3,2,4,"Javier.M");
+		Persona mariano = new Persona(2,2,4,4,"Mariano.V");
+		Persona noelia = new Persona(2,5,2,3,"Noelia");
+		Persona fernando = new Persona(2,3,3,3,"Fernando");
+		Persona andres = new Persona(3,3,1,4,"Andres");
 		
 		try 
 		{
 			FileOutputStream fos = new FileOutputStream("personas.txt");
 			ObjectOutputStream out = new ObjectOutputStream(fos);
 			
-			out.writeObject(lista);
+			out.writeObject(lista_A);
 			//out.writeObject(lista2); para cargar otra lista mas
 			out.close();
 			

@@ -18,7 +18,7 @@ import java.awt.event.MouseMotionAdapter;
 
 public class Inicio {
 
-	private JFrame frame;
+	public JFrame frame;
 	
 	private JLabel botonSalir;
 	private JLabel imagoTipo;
@@ -86,6 +86,14 @@ public class Inicio {
 		btnCargarPersonasAutomticamente.setFocusPainted( false );
 		btnCargarPersonasAutomticamente.setBorderPainted( false );
 		btnCargarPersonasAutomticamente.setBackground(new Color(149, 137, 118));
+		btnCargarPersonasAutomticamente.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				Carga_automatica c = new Carga_automatica();
+				c.frame.setVisible(true);
+				frame.setVisible(false);
+			}
+		});
 		btnCargarPersonasAutomticamente.setBounds(118, 438, 211, 65);
 		frame.getContentPane().add(btnCargarPersonasAutomticamente);
 		
