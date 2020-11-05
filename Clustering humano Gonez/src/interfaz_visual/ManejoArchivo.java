@@ -26,8 +26,9 @@ public class ManejoArchivo
 	{
 		try 
 		{
-			FileInputStream fis = new FileInputStream( "lista_personas.txt" );
+			FileInputStream fis  = new FileInputStream( "lista_personas.txt" );
 			ObjectInputStream in = new ObjectInputStream( fis );
+			
 			lista_A = ( ArrayList< Persona > ) in.readObject();
 			lista_B = ( ArrayList< Persona > ) in.readObject();
 			lista_C = ( ArrayList< Persona > ) in.readObject();

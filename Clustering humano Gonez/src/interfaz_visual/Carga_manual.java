@@ -15,6 +15,8 @@ import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
@@ -30,6 +32,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
 import java.io.File;
 import java.util.ArrayList;
 import java.awt.event.FocusAdapter;
@@ -43,7 +46,7 @@ import java.awt.Dimension;
 
 public class Carga_manual {
 
-	public JFrame frame;
+	private JFrame frame;
 	private JTextField textFieldNombre;
 	private JTextArea textArea;
 	private JLabel botonSalir;
@@ -78,6 +81,7 @@ public class Carga_manual {
 	private void initialize() {
 		Principal p = new Principal();
 		
+		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(221, 220, 197));
 		frame.setBounds(100, 100, 800, 600);
@@ -85,6 +89,9 @@ public class Carga_manual {
 		frame.setUndecorated(true);
 		frame.setLocationRelativeTo(null);
 		frame.getContentPane().setLayout(null);
+		
+	
+		
 		
 		textArea = new JTextArea();
 		textArea.setBounds(429, 99, 330, 396);
@@ -95,6 +102,8 @@ public class Carga_manual {
 		frame.getContentPane().add(textArea);
 		textArea.setMargin(new Insets(12, 7, 12, 12));
 		textArea.append("Nombre    " + "| D | M | E | C \n");
+	
+			
 		
 		
 		JPanel panel = new JPanel();
@@ -103,11 +112,25 @@ public class Carga_manual {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
+		
+		
+		JLabel lblSugerenciaVolver = new JLabel("Volver");
+		lblSugerenciaVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblSugerenciaVolver.setBounds(662, 11, 43, 31);
+		frame.getContentPane().add(lblSugerenciaVolver);
+		lblSugerenciaVolver.setVisible(false);
+		
+		
+		
+		
 		JLabel lblNombre = new JLabel("Nombre:");
 		lblNombre.setForeground(new Color(221, 220, 197));
 		lblNombre.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		lblNombre.setBounds(23, 76, 96, 14);
 		panel.add(lblNombre);
+		
+		
+		
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setMargin(new Insets(0, 2, 2, 2));
@@ -134,11 +157,16 @@ public class Carga_manual {
 		lblInteresDeporte.setBounds(22, 116, 198, 20);
 		panel.add(lblInteresDeporte);
 		
+		
+		
+		
 		JLabel lblInteresMusica = new JLabel("Interes musica:");
 		lblInteresMusica.setForeground(new Color(221, 220, 197));
 		lblInteresMusica.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		lblInteresMusica.setBounds(22, 156, 198, 20);
 		panel.add(lblInteresMusica);
+		
+		
 		
 		JLabel lblInteresEspectaculo = new JLabel("Interes espectaculo:");
 		lblInteresEspectaculo.setForeground(new Color(221, 220, 197));
@@ -147,11 +175,16 @@ public class Carga_manual {
 		panel.add(lblInteresEspectaculo);
 		
 		
+		
 		JLabel lblInteresCiencia = new JLabel("Interes ciencia:");
 		lblInteresCiencia.setForeground(new Color(221, 220, 197));
 		lblInteresCiencia.setFont(new Font("Arial Black", Font.PLAIN, 15));
 		lblInteresCiencia.setBounds(22, 236, 198, 20);
 		panel.add(lblInteresCiencia);
+		
+		
+		
+		
 		
 		@SuppressWarnings("rawtypes")
 		JComboBox comboBox_i_deporte = new JComboBox();
@@ -161,6 +194,7 @@ public class Carga_manual {
 		crearComboBox(comboBox_i_deporte);
 
 		
+		
 		@SuppressWarnings("rawtypes")
 		JComboBox comboBox_i_musica = new JComboBox();
 		comboBox_i_musica.setBackground(new Color(221, 220, 197));
@@ -169,6 +203,7 @@ public class Carga_manual {
 		crearComboBox(comboBox_i_musica);
 
 		
+		
 		@SuppressWarnings("rawtypes")
 		JComboBox comboBox_i_espectaculo = new JComboBox();
 		comboBox_i_espectaculo.setBackground(new Color(221, 220, 197));
@@ -176,6 +211,7 @@ public class Carga_manual {
 		panel.add(comboBox_i_espectaculo);
 		crearComboBox(comboBox_i_espectaculo);
 
+		
 		
 		@SuppressWarnings("rawtypes")
 		JComboBox comboBox_i_ciencia = new JComboBox();
@@ -186,7 +222,9 @@ public class Carga_manual {
 		
 		
 		
+		
 		JButton btnAgregarPersona = new JButton("");
+		movimientoBotonAgregar(btnAgregarPersona);
 		btnAgregarPersona.setIcon(new ImageIcon(Carga_manual.class.getResource("/imagenes/AGREGAR.png")));
 		btnAgregarPersona.setFocusPainted( false );
 		btnAgregarPersona.setBorderPainted( false );
@@ -200,7 +238,7 @@ public class Carga_manual {
 				int i_ciencia     = Integer.parseInt(comboBox_i_ciencia.getSelectedItem().toString());
 				String nombre     = textFieldNombre.getText();
 				
-				if(!nombre.trim().isEmpty()) {
+				if(!nombre.trim().isEmpty() && !nombre.equals("Falta nombre")) {
 					p.agregarPersona(nombre, i_deporte, i_musica, i_espectaculo, i_ciencia);
 
 					//hacer metodo para agregar el texto en el textarea
@@ -223,7 +261,7 @@ public class Carga_manual {
 							textFieldNombre.setText(null);
 							textFieldNombre.setForeground(Color.BLACK);
 						}
-					});
+					} );
 				}
 			}
 		});
@@ -232,8 +270,14 @@ public class Carga_manual {
 		
 		
 		
-		JButton btnCrearGrupos = new JButton("Crear grupos");
-		btnCrearGrupos.setBounds(128, 472, 119, 23);
+		
+		JButton btnCrearGrupos = new JButton( "" );
+		movimientoBotonCrear(btnCrearGrupos);
+		btnCrearGrupos.setIcon(new ImageIcon(Carga_automatica.class.getResource("/imagenes/CREAR-GRUPOS.png")));
+		btnCrearGrupos.setFocusPainted( false );
+		btnCrearGrupos.setBorderPainted( false );
+		btnCrearGrupos.setBackground( new Color( 29, 35, 38 ) );
+		btnCrearGrupos.setBounds( 115, 513, 184, 34 );
 		btnCrearGrupos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
@@ -242,6 +286,9 @@ public class Carga_manual {
 					ArrayList<String> listaB = p.crearGrupos().get(1);
 
 					imprimirGrupos(listaA, listaB);
+					btnCrearGrupos.setEnabled(false);
+					btnAgregarPersona.setEnabled(false);
+					lblSugerenciaVolver.setVisible(true);
 				}
 				else 
 				{
@@ -250,6 +297,9 @@ public class Carga_manual {
 			}
 		});
 		frame.getContentPane().add(btnCrearGrupos);
+		
+		
+		
 		
 		botonSalir = new JLabel("");
 		botonSalir.setBounds(766, 11, 24, 31);
@@ -263,10 +313,38 @@ public class Carga_manual {
 		botonSalir.setIcon(new ImageIcon(Carga_manual.class.getResource("/imagenes/boton-salir.png")));
 		frame.getContentPane().add(botonSalir);
 		
-		JLabel isotipo = new JLabel("");
-		isotipo.setBounds(10, 11, 50, 49);
-		isotipo.setIcon(new ImageIcon(Carga_manual.class.getResource("/imagenes/isotipo.png")));
-		frame.getContentPane().add(isotipo);
+		
+		
+		
+		JLabel lblHechoPor = new JLabel("Hecho por Elias Go\u00F1ez");
+		lblHechoPor.setForeground( new Color( 29, 35, 38 ) );
+		lblHechoPor.setBounds(57, 28, 131, 14);
+		frame.getContentPane().add(lblHechoPor);
+		lblHechoPor.setVisible(false);
+		
+		
+		
+		
+		JLabel isotipo = new JLabel( "" );
+		isotipo.addMouseListener( new MouseAdapter() 
+		{
+			@Override
+			public void mouseEntered( MouseEvent arg0 ) 
+			{
+				lblHechoPor.setVisible( true );
+			}
+			@Override
+			public void mouseExited( MouseEvent e ) 
+			{
+				lblHechoPor.setVisible( false );
+			}
+		});
+		isotipo.setBounds( 10, 11, 50, 49 );
+		isotipo.setIcon( new ImageIcon( Carga_manual.class.getResource( "/imagenes/isotipo.png") ) );
+		frame.getContentPane().add( isotipo );
+		
+		
+		
 		
 		botonVolver = new JLabel("");
 		botonVolver.addMouseListener( new MouseAdapter() {
@@ -274,7 +352,8 @@ public class Carga_manual {
 			public void mouseClicked( MouseEvent arg0 ) 
 			{
 				Inicio inicio = new Inicio();
-				inicio.frame.setVisible(true);
+				//inicio.frame.setVisible(true);
+				inicio.getFrame().setVisible(true);
 				frame.setVisible(false);
 			}
 		});
@@ -283,8 +362,16 @@ public class Carga_manual {
 		frame.getContentPane().add(botonVolver);
 		
 		
-		
 	}
+	
+	
+	public JFrame getFrame() 
+	{
+		return frame;
+	}
+	
+	//Metodos privados-----------------------------------------------------------------------------------------
+	
 	
 	@SuppressWarnings("rawtypes")
 	private void reiniciarComboBox(JComboBox comboBox_i_deporte, JComboBox comboBox_i_musica,
@@ -294,6 +381,9 @@ public class Carga_manual {
 		comboBox_i_espectaculo.setSelectedIndex(0);
 		comboBox_i_musica.setSelectedIndex(0);
 	}
+	
+	
+	
 	
 	private void imprimirGrupos(ArrayList<String> listaA, ArrayList<String> listaB) 
 	{
@@ -311,6 +401,9 @@ public class Carga_manual {
 		}
 	}
 	
+	
+	
+	
 	@SuppressWarnings("unchecked")
 	private void crearComboBox(@SuppressWarnings("rawtypes") JComboBox cBox) 
 	{
@@ -322,4 +415,47 @@ public class Carga_manual {
 	}
 	
 	
+	
+	
+	private void movimientoBotonCrear( JButton boton ) 
+	{
+		boton.addMouseMotionListener( new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved( MouseEvent arg0 ) 
+			{
+				boton.setBackground( new Color( 151, 142, 137 ) );
+
+			}
+		} );
+		boton.addMouseListener( new MouseAdapter() {
+			@Override
+			public void mouseExited( MouseEvent arg0 ) 
+			{
+				boton.setBackground( new Color( 149, 137, 118 ) );
+			}
+		} );
+	}
+	
+	
+	
+	
+	
+	private void movimientoBotonAgregar( JButton boton ) 
+	{
+		boton.addMouseMotionListener( new MouseMotionAdapter() {
+			@Override
+			public void mouseMoved( MouseEvent arg0 ) 
+			{
+				boton.setBackground( new Color( 199, 198, 177 ) );
+
+			}
+		} );
+		boton.addMouseListener( new MouseAdapter() {
+			@Override
+			public void mouseExited( MouseEvent arg0 ) 
+			{
+				boton.setBackground( new Color( 221, 220, 197 ) );
+			}
+		} );
+	}
 }

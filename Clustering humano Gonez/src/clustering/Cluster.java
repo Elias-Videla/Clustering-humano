@@ -53,10 +53,10 @@ public class Cluster implements Serializable
 	}
 	
 
-	public Grafo armarAGM(Grafo grafo) 
-	{
-		return AGM.arbolGeneradorMinimo(grafo);
-	}
+//	public Grafo armarAGM(Grafo grafo) 
+//	{
+//		return AGM.arbolGeneradorMinimo(grafo);
+//	}
 	
 	
 	public int indiceSimilaridad(Persona p1, Persona p2) 
@@ -85,15 +85,15 @@ public class Cluster implements Serializable
 		return subgrafos; //deberia retornar dos grafos
 	}
 
-	public int cantidadDeEmpates() 
-	{
-		return 0;
-	}
+
 	//Metodos privados-----------------------------------------------------------------------------------------
 	
-	private int[] buscarAristaMasPesada(Grafo grafo) {
+	private int[] buscarAristaMasPesada(Grafo grafo)
+	{
 		int mayorPeso = -1;
+		
 		int[] aristaParaCortar = new int[2];
+		
 		for(int i = 0; i < listaDeAristas.size(); i++) 
 		{
 			int peso_ij = listaDeAristas.get(i)[2];

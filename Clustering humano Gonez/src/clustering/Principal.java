@@ -38,26 +38,26 @@ public class Principal implements Serializable
 	
 	
 	
-	public ArrayList<ArrayList<String>> crearGrupos() 
+	public ArrayList< ArrayList< String > > crearGrupos() 
 	{
 		Cluster cluster = new Cluster();
 
-		Grafo agm = AGM.arbolGeneradorMinimo(cluster.crearGrafo(listaPersonas));
+		Grafo agm = AGM.arbolGeneradorMinimo( cluster.crearGrafo( listaPersonas ) );
 		
-		ArrayList<ArrayList<Integer>> grafoDividido = new ArrayList<ArrayList<Integer>>();
+		ArrayList <ArrayList< Integer > > grafoDividido = new ArrayList< ArrayList< Integer > >();
 		
-		grafoDividido = cluster.dividirGrafo(agm);
+		grafoDividido = cluster.dividirGrafo( agm );
 		
-		for(int i = 0; i < grafoDividido.get(0).size(); i++) 
-			lista_nombres_grupo_1.add(listaPersonas.get(grafoDividido.get(0).get(i)).nombre());
+		for( int i = 0; i < grafoDividido.get( 0 ).size(); i++ ) 
+			lista_nombres_grupo_1.add( listaPersonas.get( grafoDividido.get( 0 ).get( i ) ).nombre() );
 
-		for(int i = 0; i < grafoDividido.get(1).size(); i++) 
-			lista_nombres_grupo_2.add(listaPersonas.get(grafoDividido.get(1).get(i)).nombre());
+		for( int i = 0; i < grafoDividido.get( 1 ).size(); i++ ) 
+			lista_nombres_grupo_2.add( listaPersonas.get( grafoDividido.get( 1 ).get( i ) ).nombre() );
 
-		ArrayList<ArrayList<String>> grupoDeNombres = new ArrayList<ArrayList<String>>();
+		ArrayList< ArrayList< String > > grupoDeNombres = new ArrayList< ArrayList< String > >();
 		
-		grupoDeNombres.add(lista_nombres_grupo_1);
-		grupoDeNombres.add(lista_nombres_grupo_2);
+		grupoDeNombres.add( lista_nombres_grupo_1 );
+		grupoDeNombres.add( lista_nombres_grupo_2 );
 		
 		return grupoDeNombres;
 	}
