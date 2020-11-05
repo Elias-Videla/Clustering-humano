@@ -10,21 +10,12 @@ import algoritmos.BFS;
 public class Cluster implements Serializable
 {
 	private ArrayList<int[]> listaDeAristas;
-	private ArrayList<Persona> listaPersonas;
 	private static final long serialVersionUID = 1L;
 
 	
-	
 	public Cluster() 
 	{
-		listaPersonas  = new ArrayList<Persona>();
 		listaDeAristas = new ArrayList<int[]>();
-	}
-	
-	
-	public void agregarPersona(Persona persona) 
-	{
-		listaPersonas.add(persona);
 	}
 	
 	
@@ -84,15 +75,20 @@ public class Cluster implements Serializable
 		grafo.eliminarArista(aristaParaCortar[0], aristaParaCortar[1]);
 		
 		ArrayList<ArrayList<Integer>> subgrafos = new ArrayList<ArrayList<Integer>>();
+		
 		ArrayList<Integer> alcanzables_Subgrafo_A = BFS.alcanzables(grafo, aristaParaCortar[0]);
 		ArrayList<Integer> alcanzables_Subgrafo_B = BFS.alcanzables(grafo, aristaParaCortar[1]);
+		
 		subgrafos.add(alcanzables_Subgrafo_A);
 		subgrafos.add(alcanzables_Subgrafo_B);
 		
 		return subgrafos; //deberia retornar dos grafos
 	}
 
-	
+	public int cantidadDeEmpates() 
+	{
+		return 0;
+	}
 	//Metodos privados-----------------------------------------------------------------------------------------
 	
 	private int[] buscarAristaMasPesada(Grafo grafo) {
@@ -115,37 +111,5 @@ public class Cluster implements Serializable
 		return aristaParaCortar;
 	}
 	
-	
-	public static void main(String[] args) {
-		
-//		Persona elias = new Persona(3,3,1,3,"Elias");
-//		Persona pepe = new Persona(5,2,4,1,"Pepe");
-//		Persona carlos = new Persona(2,5,1,2,"Carlos"); 
-//		Persona juan = new Persona(1,3,1,5,"Juan");
-//		Persona javier = new Persona(3,4,5,1,"Javier");
-//		
-//		ArrayList<Persona> lista = new ArrayList<Persona>();
-//		lista.add(pepe);
-//		lista.add(carlos);
-//		lista.add(juan);
-//		lista.add(elias);
-//		lista.add(javier);
-//		
-//		Cluster cluster = new Cluster();
-//		//cluster.crearGrafo(lista);
-//		Grafo agm = new Grafo(lista.size());
-//		agm = cluster.armarAGM(cluster.crearGrafo(lista));
-//		int del = 3;
-//		System.out.println(BFS.alcanzables(agm, 0));
-//		System.out.println("vecinos de " + del +agm.vecinos(del));
-//		ArrayList<ArrayList<Integer>> subgrafos = new ArrayList<ArrayList<Integer>>();
-//		subgrafos = cluster.dividirGrafo(agm);
-//		System.out.println("dividido " + BFS.alcanzables(agm, 0));
-//		System.out.println("dividido " + BFS.alcanzables(agm, 4));
-//		System.out.println(subgrafos.get(0) + " " + subgrafos.get(1));
-//		
-//		//Principal.cargar();
-//		Principal.traer();
-	}
 	
 }

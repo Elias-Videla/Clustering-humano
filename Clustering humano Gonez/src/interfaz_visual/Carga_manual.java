@@ -238,8 +238,8 @@ public class Carga_manual {
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				if(p.tamanoListaPersona() >= 2) {
-					ArrayList<String> listaA = p.creaGrafo().get(0);
-					ArrayList<String> listaB = p.creaGrafo().get(1);
+					ArrayList<String> listaA = p.crearGrupos().get(0);
+					ArrayList<String> listaB = p.crearGrupos().get(1);
 
 					imprimirGrupos(listaA, listaB);
 				}
@@ -301,13 +301,13 @@ public class Carga_manual {
 		textArea.append("--------Grupo 1-------- \n");
 		for(int i = 0; i < listaA.size()/2; i++) 
 		{
-			textArea.append(listaA.get(i) + " ");
+			textArea.append(listaA.get(i) + " \n");
 		}
 		
 		textArea.append("\n--------Grupo 2--------\n");
 		for(int i = 0; i < listaB.size()/2; i++) 
 		{
-			textArea.append(listaB.get(i) + " ");
+			textArea.append(listaB.get(i) + " \n");
 		}
 	}
 	

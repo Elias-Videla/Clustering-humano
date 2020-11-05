@@ -13,30 +13,29 @@ public class AGM implements Serializable
 	public static Grafo arbolGeneradorMinimo(Grafo grafo) 
 	{
 		//creo que primero tengo que preguntar si es conexo
-		Grafo grafoNuevo = new Grafo(grafo.tamano());
+		Grafo grafoAGM = new Grafo(grafo.tamano());
 		
 		ArrayList<Integer> marcados = new ArrayList<Integer>();
 		
 		ArrayList<int[]> vecinosPendientes = new ArrayList<int[]>(); 
 		
 		marcados.add(0);
-		vecinosPendientes = agregarVecinosPendientes(grafo, 0, vecinosPendientes, marcados);
 		
+		vecinosPendientes = agregarVecinosPendientes(grafo, 0, vecinosPendientes, marcados);
 		
 		for(int i = 1; i < grafo.tamano(); i++) 
 		{
-			
 			int indice = buscarVecinoMenorPeso(vecinosPendientes, marcados); //el indice tiene la posicion del arraylist 
 																	//vecinosPendientes del vecino con menor peso
 			//System.out.println("indice " + indice);
 			//System.out.println("marcados " + marcados);
 			//imprimirVecinos(vecinosPendientes);
 			
-			int vertice_i = vecinosPendientes.get(indice)[0];
-			int vertice_j = vecinosPendientes.get(indice)[1];
-			int peso      = vecinosPendientes.get(indice)[2];
+			int vertice_i = vecinosPendientes.get( indice )[ 0 ];
+			int vertice_j = vecinosPendientes.get( indice )[ 1 ];
+			int peso      = vecinosPendientes.get( indice )[ 2 ];
 			
-			grafoNuevo.agregarArista( vertice_i, vertice_j, peso );
+			grafoAGM.agregarArista( vertice_i, vertice_j, peso );
 			
 			marcados.add(vecinosPendientes.get(indice)[0]);
 			 
@@ -44,8 +43,8 @@ public class AGM implements Serializable
 			vecinosPendientes = eliminarMarcados(grafo, vecinosPendientes, marcados);
 			//vecinosPendientes.remove(indice);
 		}
-		System.out.println("marcados " + marcados);
-		return grafoNuevo;
+		//System.out.println("marcados " + marcados);
+		return grafoAGM;
 	}
 	//------------------------------------------------------------------------------------------------
 	//------------------------------------------------------------------------------------------------
@@ -66,18 +65,21 @@ public class AGM implements Serializable
 	
 	
 	
-	private static ArrayList<int[]> eliminarMarcados(Grafo grafo, ArrayList<int[]> vPendientes, ArrayList<Integer>marcados)
+	private static ArrayList<int[]> eliminarMarcados(Grafo grafo, ArrayList<int[]> vecinosPendientes, ArrayList<Integer>marcados)
 	{
-		ArrayList<int[]> temporal = new ArrayList<int[]>();
-		int rango = vPendientes.size();
+		ArrayList<int[]> listaSinMarcados = new ArrayList<int[]>();
+		
+		int rango = vecinosPendientes.size();
+		
 		for(int i = 0; i < rango; i++) 
 		{
-			if(!marcados.contains(vPendientes.get(i)[0])) 
+			if(!marcados.contains(vecinosPendientes.get(i)[0])) 
 			{
-				temporal.add(vPendientes.get(i));
+				listaSinMarcados.add(vecinosPendientes.get(i));
 			}
 		}
-		return temporal;
+		
+		return listaSinMarcados;
 	}
 	 
 	
@@ -115,16 +117,16 @@ public class AGM implements Serializable
 		return indice;
 	}
 	
-	private static void imprimirVecinos (ArrayList<int[]> vecinosPendientes) 
-	{
-		for(int j = 0; j < vecinosPendientes.size(); j++) { 
-			int[] prueba = vecinosPendientes.get(j);
-			for(int i = 0; i < prueba.length; i++) 
-			{
-				System.out.print(prueba[i] + " ");
-			}
-			System.out.println();
-		}
-	}
+//	private static void imprimirVecinos (ArrayList<int[]> vecinosPendientes) 
+//	{
+//		for(int j = 0; j < vecinosPendientes.size(); j++) { 
+//			int[] prueba = vecinosPendientes.get(j);
+//			for(int i = 0; i < prueba.length; i++) 
+//			{
+//				System.out.print(prueba[i] + " ");
+//			}
+//			System.out.println();
+//		}
+//	}
 	
 }
