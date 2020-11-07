@@ -16,7 +16,7 @@ public class Persona implements Serializable
 	
 	public Persona( int i_deporte, int i_musica, int i_espectaculo, int i_ciencia, String nombre ) 
 	{
-		verificarParametros(i_deporte, i_musica, i_espectaculo, i_ciencia);
+		verificarParametros( i_deporte, i_musica, i_espectaculo, i_ciencia );
 		
 		interesDeporte     =  i_deporte;
 		interesMusica      =  i_musica;
@@ -53,24 +53,24 @@ public class Persona implements Serializable
 	
 	//Metodos privados-------------------------------------------------------------------------------------------
 	
-	private static int valorAbsoluto(int valor) 
+	private static int valorAbsoluto( int valor ) 
 	{
-		return valor < 0 ? valor*(-1) : valor;
+		return valor < 0 ? valor*( -1 ) : valor; 
 	}
 	
 	
 	private void verificarParametros( int i_deporte, int i_musica, int i_espectaculo, int i_ciencia ) 
 	{
-		if( i_deporte < 1 || i_deporte > 5)
+		if( i_deporte < 1 || i_deporte > 5 )
 			throw new IllegalArgumentException( "Numero fuera de rango (del 1 al 5) " + i_deporte );
 		
-		if( i_musica < 1 || i_musica > 5) 
+		if( i_musica < 1 || i_musica > 5 ) 
 			throw new IllegalArgumentException( "Numero fuera de rango (del 1 al 5) " + i_musica );
 		
-		if( i_espectaculo < 1 || i_espectaculo > 5)
+		if( i_espectaculo < 1 || i_espectaculo > 5 )
 			throw new IllegalArgumentException( "Numero fuera de rango (del 1 al 5) " + i_espectaculo );
 		
-		if( i_ciencia < 1 || i_ciencia > 5)
+		if( i_ciencia < 1 || i_ciencia > 5 )
 			throw new IllegalArgumentException( "Numero fuera de rango (del 1 al 5) " + i_ciencia );
 	}
 }

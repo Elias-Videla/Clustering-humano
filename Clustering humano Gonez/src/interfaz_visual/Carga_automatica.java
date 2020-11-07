@@ -1,48 +1,28 @@
 package interfaz_visual;
 
 import java.awt.Color;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.table.TableColumn;
 
 import clustering.Persona;
 import clustering.Principal;
 
-import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.SystemColor;
-import javax.swing.JTable;
-import javax.swing.border.MatteBorder;
-import java.awt.Component;
-import java.awt.Rectangle;
 import java.awt.ComponentOrientation;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
-import java.io.File;
 import java.util.ArrayList;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 
-import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.border.SoftBevelBorder;
-import javax.swing.border.BevelBorder;
-import java.awt.Dimension;
 import javax.swing.JRadioButton;
 
 public class Carga_automatica {
@@ -54,26 +34,12 @@ public class Carga_automatica {
 	private ButtonGroup botonGroup;
 	private Principal principal;
 
-	/**
-	 * Launch the application.
-	 */
-//	public static void main(String[] args) {
-//		EventQueue.invokeLater(new Runnable() {
-//			public void run() {
-//				try {
-//					Carga_manual window = new Carga_manual();
-//					window.frame.setVisible(true);
-//				} catch (Exception e) {
-//					e.printStackTrace();
-//				}
-//			}
-//		});
-//	}
 
 	/**
 	 * Create the application.
 	 */
-	public Carga_automatica() {
+	public Carga_automatica() 
+	{
 		initialize();
 	}
 
@@ -116,11 +82,11 @@ public class Carga_automatica {
 		
 		
 		
-		JLabel lblSugerenciaVolver = new JLabel("Volver");
-		lblSugerenciaVolver.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblSugerenciaVolver.setBounds(662, 11, 43, 31);
-		frame.getContentPane().add(lblSugerenciaVolver);
-		lblSugerenciaVolver.setVisible(false);
+		JLabel lblSugerenciaVolver = new JLabel( "Volver" );
+		lblSugerenciaVolver.setFont( new Font( "Tahoma", Font.PLAIN, 13 ) );
+		lblSugerenciaVolver.setBounds( 662, 11, 43, 31 );
+		frame.getContentPane().add( lblSugerenciaVolver );
+		lblSugerenciaVolver.setVisible( false );
 		
 		
 		
@@ -168,7 +134,7 @@ public class Carga_automatica {
 		radioAlumnos.setBackground( new Color( 149, 137, 118 ) );
 		radioAlumnos.setBounds( 226, 117, 109, 23 );
 		panel.add( radioAlumnos );
-		radioAlumnos.setSelected(true);
+		radioAlumnos.setSelected( true );
 		botonGroup.add( radioAlumnos );
 		
 		
@@ -199,14 +165,15 @@ public class Carga_automatica {
 		
 		JButton btnVerPersonas = new JButton( "" );
 		movimientoBotonVer(btnVerPersonas);
-		btnVerPersonas.addActionListener( new ActionListener() {
+		btnVerPersonas.addActionListener( new ActionListener()
+		{
 			public void actionPerformed( ActionEvent arg0 )
 			{
 				if( radioAlumnos.isSelected() ) 
 				{
 					imprimirListaPersonas( ManejoArchivo.lista_A() );
 				}
-				if( radioProfesores.isSelected()) 
+				if( radioProfesores.isSelected() ) 
 				{
 					imprimirListaPersonas( ManejoArchivo.lista_B() );
 				}
@@ -237,8 +204,9 @@ public class Carga_automatica {
 		btnCrearGrupos.setBorderPainted( false );
 		btnCrearGrupos.setBackground( new Color( 29, 35, 38 ) );
 		btnCrearGrupos.setBounds( 115, 513, 184, 34 );
-		btnCrearGrupos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) 
+		btnCrearGrupos.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed( ActionEvent arg0 ) 
 			{
 				if( radioAlumnos.isSelected() )
 				{
@@ -262,9 +230,9 @@ public class Carga_automatica {
 
 				imprimirGrupos( listaA, listaB );
 				
-				btnCrearGrupos.setEnabled(false);
-				btnVerPersonas.setEnabled(false);
-				lblSugerenciaVolver.setVisible(true);
+				btnCrearGrupos.setEnabled( false );
+				btnVerPersonas.setEnabled( false );
+				lblSugerenciaVolver.setVisible( true );
 			}
 		} );
 		frame.getContentPane().add( btnCrearGrupos );
@@ -302,7 +270,7 @@ public class Carga_automatica {
 			{
 				lblHechoPor.setVisible( false );
 			}
-		});
+		} );
 		isotipo.setBounds( 10, 11, 50, 49 );
 		isotipo.setIcon( new ImageIcon( Carga_manual.class.getResource( "/imagenes/isotipo.png") ) );
 		frame.getContentPane().add( isotipo );
@@ -310,7 +278,8 @@ public class Carga_automatica {
 		
 		
 		botonVolver = new JLabel( "" );
-		botonVolver.addMouseListener( new MouseAdapter() {
+		botonVolver.addMouseListener( new MouseAdapter() 
+		{
 			@Override
 			public void mouseClicked( MouseEvent arg0 ) 
 			{
@@ -319,13 +288,14 @@ public class Carga_automatica {
 				inicio.getFrame().setVisible(true);
 				frame.setVisible( false );
 			}
-		});
+		} );
 		botonVolver.setIcon( new ImageIcon( Carga_manual.class.getResource( "/imagenes/boton-volver.png" ) ) );
 		botonVolver.setBounds( 709, 11, 43, 31 );
 		frame.getContentPane().add( botonVolver );
 		
-		
 	}
+	
+	
 	
 	
 	public JFrame getFrame() 
@@ -382,7 +352,8 @@ public class Carga_automatica {
 	
 	private void movimientoBotonCrear( JButton boton ) 
 	{
-		boton.addMouseMotionListener( new MouseMotionAdapter() {
+		boton.addMouseMotionListener( new MouseMotionAdapter()
+		{
 			@Override
 			public void mouseMoved( MouseEvent arg0 ) 
 			{
@@ -390,7 +361,8 @@ public class Carga_automatica {
 
 			}
 		} );
-		boton.addMouseListener( new MouseAdapter() {
+		boton.addMouseListener( new MouseAdapter() 
+		{
 			@Override
 			public void mouseExited( MouseEvent arg0 ) 
 			{
@@ -402,7 +374,8 @@ public class Carga_automatica {
 	
 	private void movimientoBotonVer( JButton boton ) 
 	{
-		boton.addMouseMotionListener( new MouseMotionAdapter() {
+		boton.addMouseMotionListener( new MouseMotionAdapter() 
+		{
 			@Override
 			public void mouseMoved( MouseEvent arg0 ) 
 			{
@@ -410,7 +383,8 @@ public class Carga_automatica {
 
 			}
 		} );
-		boton.addMouseListener( new MouseAdapter() {
+		boton.addMouseListener( new MouseAdapter()
+		{
 			@Override
 			public void mouseExited( MouseEvent arg0 ) 
 			{

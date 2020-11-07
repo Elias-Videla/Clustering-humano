@@ -3,8 +3,9 @@ package clustering;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-public class GrafoTest {
+ 
+public class GrafoTest 
+{
 
 	@Test (expected = IllegalArgumentException.class)
 	public void verticeNegativoTest() 

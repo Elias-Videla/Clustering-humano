@@ -6,11 +6,8 @@ import java.util.ArrayList;
 
 public class Grafo implements Serializable
 {
-	//representamos el grafo por su matriz de adyacencia
-
 	private int [][] A;
 	private static final long serialVersionUID = 1L;
-
 
 	
 	public Grafo( int vertices )  
@@ -43,13 +40,13 @@ public class Grafo implements Serializable
 		verificarVerticeValido( i );
 		verificarVerticeValido( j );
 		verificarDistintos( i, j );
-		return A[ i ][ j ] >= 0;    //este simbolo me estaba complicando la vida jajajajajajaj :')
+		return A[ i ][ j ] >= 0;    
 	}
 	
 	
 	public int pesoDeArista( int i, int j ) 
 	{
-		return A[ i ][ j ];
+		return A[ i ][ j ]; 
 	}
 	
 	
@@ -80,27 +77,27 @@ public class Grafo implements Serializable
 		verificarVerticeValido( j );
 		verificarDistintos( i, j );
 
-		A[ i ][ j ] = -1;  //no me deja poner null
+		A[ i ][ j ] = -1;  
 		A[ j ][ i ] = -1;
 	}
 	
 	
 	
 	
-	
-	
-	
 	//Metodos privados-----------------------------------------------------------------------------------------
-	private void verificarVerticeValido( int i ) {
+	private void verificarVerticeValido( int i ) 
+	{
 		if( i < 0 )
 			throw new IllegalArgumentException( "El vertice no puede ser negativo: " + i );
 		if( i >= A.length )
 			throw new IllegalArgumentException( "Los vertiices deben estar entre 0 y |V| " + i );
 	}
 	
-	private void verificarDistintos( int i, int j ) {
+	private void verificarDistintos( int i, int j ) 
+	{
 		if( i == j )
 			throw new IllegalArgumentException( "No se permiten loops" );
 	}
+	
 	
 }

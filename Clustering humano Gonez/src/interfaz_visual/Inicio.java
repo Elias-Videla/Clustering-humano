@@ -5,15 +5,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
 import java.awt.event.MouseMotionAdapter;
 
 public class Inicio 
@@ -27,7 +24,7 @@ public class Inicio
 	 * Launch the application.
 	 */
 	public static void main( String[] args ) {
-		EventQueue.invokeLater( new Runnable() {
+		EventQueue.invokeLater( new Runnable() { 
 			public void run() {
 				try {
 					Inicio window = new Inicio();
@@ -71,8 +68,7 @@ public class Inicio
 			public void actionPerformed( ActionEvent arg0 ) 
 			{
 				Carga_manual c = new Carga_manual();
-				//c.frame.setVisible( true );
-				c.getFrame().setVisible(true);
+				c.getFrame().setVisible( true );
 				frame.setVisible( false );
 			}
 		} );
@@ -91,8 +87,7 @@ public class Inicio
 			public void actionPerformed( ActionEvent arg0 ) 
 			{
 				Carga_automatica c = new Carga_automatica();
-				//c.frame.setVisible( true );
-				c.getFrame().setVisible(true);
+				c.getFrame().setVisible( true );
 				frame.setVisible( false );
 			}
 		} );
