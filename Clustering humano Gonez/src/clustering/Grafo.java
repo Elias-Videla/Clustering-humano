@@ -8,6 +8,7 @@ public class Grafo implements Serializable
 {
 	private int [][] A;
 	private static final long serialVersionUID = 1L;
+	private int cantidadVertices;
 
 	
 	public Grafo( int vertices )  
@@ -21,6 +22,7 @@ public class Grafo implements Serializable
 				A[ i ][ j ] = -1;
 			}
 		}
+		cantidadVertices = vertices;
 	}
 
 	
@@ -82,7 +84,10 @@ public class Grafo implements Serializable
 	}
 	
 	
-	
+	public int cantidadVertices() 
+	{
+		return cantidadVertices;
+	}
 	
 	//Metodos privados-----------------------------------------------------------------------------------------
 	private void verificarVerticeValido( int i ) 

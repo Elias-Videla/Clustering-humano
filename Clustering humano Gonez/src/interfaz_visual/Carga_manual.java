@@ -52,7 +52,7 @@ public class Carga_manual {
 	 */
 	private void initialize()
 	{
-		Principal p = new Principal();
+		Principal principal = new Principal();
 		
 		
 		frame = new JFrame();
@@ -73,8 +73,8 @@ public class Carga_manual {
 		textArea.setWrapStyleWord( true );
 		textArea.setEditable( false );
 		frame.getContentPane().add( textArea );
-		textArea.setMargin( new Insets( 12, 7, 12, 12 ) );
-		textArea.append( "Nombre    " + "| D | M | E | C \n" );
+		textArea.setMargin( new Insets( 5, 5, 12, 12 ) );
+		textArea.append( "Nombre " + "| Deporte | Musica | Espectaculo | Ciencia\n" );
 	
 			
 		
@@ -84,6 +84,7 @@ public class Carga_manual {
 		panel.setBackground( new Color( 149, 137, 118 ) );
 		frame.getContentPane().add( panel );
 		panel.setLayout( null );
+		
 		
 		
 		
@@ -133,7 +134,6 @@ public class Carga_manual {
 		
 		
 		
-		
 		JLabel lblInteresMusica = new JLabel( "Interes musica:" );
 		lblInteresMusica.setForeground( new Color( 221, 220, 197 ) );
 		lblInteresMusica.setFont( new Font( "Arial Black", Font.PLAIN, 15 ) );
@@ -155,7 +155,6 @@ public class Carga_manual {
 		lblInteresCiencia.setFont( new Font( "Arial Black", Font.PLAIN, 15 ) );
 		lblInteresCiencia.setBounds( 22, 236, 198, 20 );
 		panel.add( lblInteresCiencia );
-		
 		
 		
 		
@@ -214,14 +213,13 @@ public class Carga_manual {
 				String nombre     = textFieldNombre.getText();
 				
 				if( !nombre.trim().isEmpty() && !nombre.equals( "Falta nombre" ) ) {
-					p.agregarPersona( nombre, i_deporte, i_musica, i_espectaculo, i_ciencia );
-
-					//hacer metodo para agregar el texto en el textarea
+					principal.agregarPersona( nombre, i_deporte, i_musica, i_espectaculo, i_ciencia );
 					
 					textArea.append( "" + nombre + " " + i_deporte + " " + i_musica + " " + i_espectaculo
 							+ " " + i_ciencia + " \n" );
 					
 					textFieldNombre.setText( null );
+					textFieldNombre.requestFocusInWindow();
 					
 					reiniciarComboBox( comboBox_i_deporte, comboBox_i_musica, comboBox_i_espectaculo,
 							comboBox_i_ciencia );
@@ -258,10 +256,10 @@ public class Carga_manual {
 		{
 			public void actionPerformed( ActionEvent arg0 ) 
 			{
-				if( p.tamanoListaPersonas() >= 2 )
+				if( principal.tamanoListaPersonas() >= 2 )
 				{
-					ArrayList< String > listaA = p.crearGrupos().get( 0 );
-					ArrayList< String > listaB = p.crearGrupos().get( 1 );
+					ArrayList< String > listaA = principal.crearGrupos().get( 0 );
+					ArrayList< String > listaB = principal.crearGrupos().get( 1 );
 
 					imprimirGrupos( listaA, listaB );
 					btnCrearGrupos.setEnabled( false );
@@ -331,7 +329,6 @@ public class Carga_manual {
 			public void mouseClicked( MouseEvent arg0 ) 
 			{
 				Inicio inicio = new Inicio();
-				//inicio.frame.setVisible(true);
 				inicio.getFrame().setVisible( true );
 				frame.setVisible( false );
 			}
@@ -358,7 +355,7 @@ public class Carga_manual {
 	{
 		comboBox_i_ciencia.setSelectedIndex( 0 );
 		comboBox_i_deporte.setSelectedIndex (0 );
-		comboBox_i_espectaculo.setSelectedIndex (0 );
+		comboBox_i_espectaculo.setSelectedIndex ( 0 );
 		comboBox_i_musica.setSelectedIndex( 0 );
 	}
 	

@@ -41,15 +41,16 @@ public class Principal implements Serializable
 	
 	public ArrayList< ArrayList< String > > crearGrupos() 
 	{
-		Cluster cluster = new Cluster();
-
-		Grafo agm = crear_arbol_generador_minimo(cluster);
+		if( listaPersonas.isEmpty() || listaPersonas.size() < 2 ) 
+			throw new RuntimeException( "Cantidad de personas insuficiente: " + listaPersonas.size() + "< 2" );
 		
-		ArrayList < ArrayList< Integer > > grafoDividido = dividir_el_grafo_en_dos(agm, cluster);
+		Grafo agm = crear_arbol_generador_minimo();
 		
-		extraer_los_nombres_de_cada_grupo(grafoDividido);
+		ArrayList < ArrayList< Integer > > grafoDividido = dividir_el_grafo_en_dos( agm );
+		
+		extraer_los_nombres_de_cada_grupo( grafoDividido );
 
-		ArrayList<ArrayList<String>> grupoDeNombres = anadir_los_nombres_a_las_listas();
+		ArrayList< ArrayList< String > > grupoDeNombres = anadir_los_nombres_a_las_listas();
 		
 		return grupoDeNombres; 
 	}
@@ -58,18 +59,18 @@ public class Principal implements Serializable
 	
 	//Metodos privados-------------------------------------------------------------------------------------------
 	
-	private Grafo crear_arbol_generador_minimo( Cluster cluster )
+	private Grafo crear_arbol_generador_minimo()
 	{
-		Grafo agm = AGM.arbolGeneradorMinimo( cluster.crearGrafo( listaPersonas ) );
+		Grafo agm = AGM.arbolGeneradorMinimo( Cluster.crearGrafo( listaPersonas ) );
 		return agm;
 	}
 	
 	
-	private ArrayList < ArrayList< Integer > > dividir_el_grafo_en_dos( Grafo grafo, Cluster cluster )
+	private ArrayList < ArrayList< Integer > > dividir_el_grafo_en_dos( Grafo grafo )
 	{
 		ArrayList < ArrayList< Integer > > grafoDividido = new ArrayList< ArrayList< Integer > >();
 		
-		grafoDividido = cluster.dividirGrafo( grafo );
+		grafoDividido = Cluster.dividirGrafo( grafo );
 		
 		return grafoDividido;
 

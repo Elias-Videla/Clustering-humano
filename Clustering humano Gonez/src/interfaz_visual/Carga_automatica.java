@@ -62,6 +62,7 @@ public class Carga_automatica {
 		
 		
 		
+		
 		textArea = new JTextArea();
 		textArea.setBounds( 429, 99, 330, 396 );
 		textArea.setFont( new Font( "Arial Black", Font.PLAIN, 12 ) );
@@ -69,8 +70,9 @@ public class Carga_automatica {
 		textArea.setWrapStyleWord( true );
 		textArea.setEditable( false );
 		frame.getContentPane().add( textArea );
-		textArea.setMargin( new Insets( 12, 7, 12, 12 ) );
-		textArea.append( "Nombre    " + "| D | M | E | C \n" );
+		textArea.setMargin( new Insets( 5, 5, 12, 12 ) );
+		textArea.append( "Nombre " + "| Deporte | Musica | Espectaculo | Ciencia\n" );
+		
 		
 		
 		
@@ -82,11 +84,13 @@ public class Carga_automatica {
 		
 		
 		
+		
 		JLabel lblSugerenciaVolver = new JLabel( "Volver" );
 		lblSugerenciaVolver.setFont( new Font( "Tahoma", Font.PLAIN, 13 ) );
 		lblSugerenciaVolver.setBounds( 662, 11, 43, 31 );
 		frame.getContentPane().add( lblSugerenciaVolver );
 		lblSugerenciaVolver.setVisible( false );
+		
 		
 		
 		
@@ -122,11 +126,13 @@ public class Carga_automatica {
 		
 		
 		
+		
 		JLabel lblListaDePersonas = new JLabel( "Lista de personas" );
 		lblListaDePersonas.setForeground( new Color( 221, 220, 197 ) );
 		lblListaDePersonas.setFont( new Font( "Arial Black", Font.PLAIN, 15 ) );
 		lblListaDePersonas.setBounds( 61, 69, 198, 20 );
 		panel.add( lblListaDePersonas );
+		
 		
 		
 		
@@ -163,6 +169,7 @@ public class Carga_automatica {
 		
 		
 		
+		
 		JButton btnVerPersonas = new JButton( "" );
 		movimientoBotonVer(btnVerPersonas);
 		btnVerPersonas.addActionListener( new ActionListener()
@@ -196,6 +203,7 @@ public class Carga_automatica {
 		panel.add( btnVerPersonas );
 		
 	
+		
 		
 		JButton btnCrearGrupos = new JButton( "" );
 		movimientoBotonCrear(btnCrearGrupos);
@@ -239,6 +247,7 @@ public class Carga_automatica {
 		
 		
 		
+		
 		botonSalir = new JLabel( "" );
 		botonSalir.setBounds( 766, 11, 24, 31 );
 		botonSalir.addMouseListener( new MouseAdapter() {
@@ -251,11 +260,17 @@ public class Carga_automatica {
 		botonSalir.setIcon( new ImageIcon( Carga_manual.class.getResource( "/imagenes/boton-salir.png" ) ) );
 		frame.getContentPane().add( botonSalir );
 		
+		
+		
+		
 		JLabel lblHechoPor = new JLabel("Hecho por Elias Go\u00F1ez");
 		lblHechoPor.setForeground( new Color( 29, 35, 38 ) );
 		lblHechoPor.setBounds(57, 28, 131, 14);
 		frame.getContentPane().add(lblHechoPor);
 		lblHechoPor.setVisible(false);
+		
+		
+		
 		
 		JLabel isotipo = new JLabel( "" );
 		isotipo.addMouseListener( new MouseAdapter() 
@@ -277,6 +292,7 @@ public class Carga_automatica {
 		
 		
 		
+		
 		botonVolver = new JLabel( "" );
 		botonVolver.addMouseListener( new MouseAdapter() 
 		{
@@ -284,7 +300,6 @@ public class Carga_automatica {
 			public void mouseClicked( MouseEvent arg0 ) 
 			{
 				Inicio inicio = new Inicio();
-//				inicio.frame.setVisible( true );
 				inicio.getFrame().setVisible(true);
 				frame.setVisible( false );
 			}
@@ -322,11 +337,13 @@ public class Carga_automatica {
 		}
 	}
 	
+	
+	
 	@SuppressWarnings("unused")
 	private void imprimirListaPersonas( ArrayList<Persona> lista ) 
 	{
 		textArea.setText( null );
-		textArea.append( "Nombre    " + "| D | M | E | C \n" );
+		textArea.append( "Nombre " + "| Deporte | Musica | Espectaculo | Ciencia\n" );
 		for( int i = 0; i < lista.size(); i++ ) 
 		{
 			textArea.append( lista.get( i ).nombre() + "    " + lista.get( i ).interesDeporte() + " " + 
@@ -334,6 +351,8 @@ public class Carga_automatica {
 					lista.get( i ).interesCiencia() + "\n" );
 		}
 	}
+	
+	
 	
 	@SuppressWarnings("unused")
 	private void agregarPersonasAlGrupo( ArrayList< Persona > lista ) 
@@ -349,6 +368,8 @@ public class Carga_automatica {
 			principal.agregarPersona( nombre, i_deporte, i_musica, i_espectaculo, i_ciencia );
 		}
 	}
+	
+	
 	
 	private void movimientoBotonCrear( JButton boton ) 
 	{
@@ -370,6 +391,8 @@ public class Carga_automatica {
 			}
 		} );
 	}
+	
+	
 	
 	
 	private void movimientoBotonVer( JButton boton ) 

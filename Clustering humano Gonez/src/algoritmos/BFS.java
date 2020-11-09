@@ -37,16 +37,17 @@ public class BFS implements Serializable
 			return false;
 	}
 	
+	
+	
 	public static ArrayList< Integer > alcanzables ( Grafo grafo, int origen )
 	{
-		ArrayList< Integer > marcados = new ArrayList< Integer >();
-		//Set<Integer> marcados = new HashSet<Integer>();
+		ArrayList< Integer > marcados   = new ArrayList< Integer >();
 		ArrayList< Integer > pendientes = new ArrayList< Integer >();
 		pendientes.add( origen );
 		
 		while( pendientes.size() != 0 ) 
 		{
-			int actual = pendientes.get( 0 ); ///////
+			int actual = pendientes.get( 0 ); 
 			marcados.add( actual );
 			pendientes.remove( 0 );
 			

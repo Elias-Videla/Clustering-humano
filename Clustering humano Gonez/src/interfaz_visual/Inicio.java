@@ -33,15 +33,15 @@ public class Inicio
 					e.printStackTrace();
 				}
 			}
-		});
+		} );
 	}
 
 	/**
 	 * Create the application.
 	 */
-	public Inicio() {
+	public Inicio()
+	{
 		initialize();
-		
 	}
 
 	/**
@@ -55,6 +55,7 @@ public class Inicio
 		frame.getContentPane().setLayout( null );
 		frame.setUndecorated( true );
 		frame.setLocationRelativeTo( null );
+		
 		
 		
 		
@@ -77,6 +78,7 @@ public class Inicio
 		
 		
 		
+		
 		JButton btnCargarPersonasAutomticamente = new JButton( "" );
 		movimientoCursor( btnCargarPersonasAutomticamente );
 		btnCargarPersonasAutomticamente.setIcon( new ImageIcon( Inicio.class.getResource( "/imagenes/AUTOMATICA.png" ) ) );
@@ -96,6 +98,7 @@ public class Inicio
 		
 		
 		
+		
 		botonSalir = new JLabel( "" );
 		botonSalir.addMouseListener( new MouseAdapter() {
 			@Override
@@ -107,6 +110,7 @@ public class Inicio
 		botonSalir.setIcon( new ImageIcon( Inicio.class.getResource( "/imagenes/boton-salir.png" ) ) );
 		botonSalir.setBounds( 416, 11, 24, 29 );
 		frame.getContentPane().add( botonSalir );
+		
 		
 		
 		
@@ -123,6 +127,7 @@ public class Inicio
 	{
 		return frame;
 	}
+	
 	
 	
 	private void movimientoCursor( JButton boton ) 
@@ -143,4 +148,5 @@ public class Inicio
 			}
 		} );
 	}
+	
 }

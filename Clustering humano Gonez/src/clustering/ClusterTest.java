@@ -13,13 +13,11 @@ public class ClusterTest
 	@Test
 	public void dividirGrafoCorrectamenteTest() 
 	{
-		Cluster cluster = new Cluster();
-		
 		ArrayList< Persona > listaPersonas = creandoListaDePersonas();
 		
-		Grafo agm = creandoAGM( cluster, listaPersonas );
+		Grafo agm = creandoAGM( listaPersonas );
 		
-		ArrayList< ArrayList< Integer > > subgrafos = cluster.dividirGrafo( agm );
+		ArrayList< ArrayList< Integer > > subgrafos = Cluster.dividirGrafo( agm );
 		
 		ArrayList< ArrayList< Integer > > prueba = creandoListaEsperada();
 		
@@ -33,14 +31,13 @@ public class ClusterTest
 	@Test ( expected = IllegalArgumentException.class )
 	public void dividirUnGrafoNoConexoTest() 
 	{
-		Cluster cluster = new Cluster();
 		Grafo grafo = new Grafo( 5 );
 		
 		grafo.agregarArista( 0, 1, 2 );
 		grafo.agregarArista( 2, 3, 1 );
 		grafo.agregarArista( 3, 4, 2 );
 		
-		cluster.dividirGrafo( grafo );
+		Cluster.dividirGrafo( grafo );
 	}
 
 	
@@ -69,9 +66,9 @@ public class ClusterTest
 	
 	
 	
-	private Grafo creandoAGM( Cluster cluster, ArrayList< Persona > listaPersonas )
+	private Grafo creandoAGM( ArrayList< Persona > listaPersonas )
 	{
-		Grafo grafo = cluster.crearGrafo( listaPersonas );
+		Grafo grafo = Cluster.crearGrafo( listaPersonas );
 		Grafo agm = AGM.arbolGeneradorMinimo( grafo );
 		return agm;
 	}

@@ -24,22 +24,22 @@ public class AGM implements Serializable
 		
 		marcados.add( 0 );
 		
-		vecinosPendientes = agregarVecinosPendientes( grafo, 0, vecinosPendientes, marcados );
+		vecinosPendientes = agregarVecinosPendientes( grafo, 0, vecinosPendientes/*, marcados */);
 		
 		for( int i = 1; i < grafo.tamano(); i++ ) 
 		{
-			int indice = buscarVecinoMenorPeso( vecinosPendientes, marcados ); //el indice tiene la posicion del arraylist 
-																	//vecinosPendientes del vecino con menor peso
-			int vertice_i = vecinosPendientes.get( indice )[ 0 ];
-			int vertice_j = vecinosPendientes.get( indice )[ 1 ];
-			int peso      = vecinosPendientes.get( indice )[ 2 ];
+			int indiceDelArrayPendientes = buscarVecinoMenorPeso( vecinosPendientes/*, marcados */); 
+																	
+			int vertice_i = vecinosPendientes.get( indiceDelArrayPendientes )[ 0 ];
+			int vertice_j = vecinosPendientes.get( indiceDelArrayPendientes )[ 1 ];
+			int peso      = vecinosPendientes.get( indiceDelArrayPendientes )[ 2 ];
 			
 			grafoAGM.agregarArista( vertice_i, vertice_j, peso );
 			
-			marcados.add( vecinosPendientes.get( indice )[0] );
+			marcados.add( vecinosPendientes.get( indiceDelArrayPendientes )[0] );
 			 
-			vecinosPendientes = agregarVecinosPendientes( grafo, vertice_i, vecinosPendientes, marcados );
-			vecinosPendientes = eliminarMarcados( grafo, vecinosPendientes, marcados );
+			vecinosPendientes = agregarVecinosPendientes( grafo, vertice_i, vecinosPendientes/*, marcados */);
+			vecinosPendientes = eliminarMarcados( /*grafo,*/ vecinosPendientes, marcados );
 		}
 		
 		return grafoAGM; 
@@ -48,17 +48,17 @@ public class AGM implements Serializable
 	//------------------------------------------------------------------------------------------------
 	
 
-	private static ArrayList< int[] > agregarVecinosPendientes( Grafo grafo, int vertice, ArrayList< int[] > vPendientes, ArrayList< Integer > marcados ) 
+	private static ArrayList< int[] > agregarVecinosPendientes( Grafo grafo, int vertice, ArrayList< int[] > vPendientes/*, ArrayList< Integer > marcados */) 
 	{
 		for( Integer it : grafo.vecinos( vertice ) ) 
 		{
-			int[] array = new int[ 3 ];    //creo el arreglo que despues se va a guardar en el arraylist
+			int[] parVerticesYpeso = new int[ 3 ];    
 			
-			array[ 0 ] = it;
-			array[ 1 ] = vertice;
-			array[ 2 ] = grafo.pesoDeArista( it, vertice );
+			parVerticesYpeso[ 0 ] = it;
+			parVerticesYpeso[ 1 ] = vertice;
+			parVerticesYpeso[ 2 ] = grafo.pesoDeArista( it, vertice );
 			
-			vPendientes.add( array );
+			vPendientes.add( parVerticesYpeso );
 		} 
 		
 		return vPendientes;
@@ -67,7 +67,7 @@ public class AGM implements Serializable
 	
 	
 	
-	private static ArrayList< int[] > eliminarMarcados( Grafo grafo, ArrayList< int[] > vecinosPendientes, ArrayList< Integer > marcados )
+	private static ArrayList< int[] > eliminarMarcados( /*Grafo grafo,*/ ArrayList< int[] > vecinosPendientes, ArrayList< Integer > marcados )
 	{
 		ArrayList< int[] > listaSinMarcados = new ArrayList< int[] >();
 		
@@ -87,7 +87,7 @@ public class AGM implements Serializable
 	
 	
 	
-	private static int buscarVecinoMenorPeso( ArrayList< int[] > vecinosPendientes, ArrayList< Integer > marcados ) 
+	private static int buscarVecinoMenorPeso( ArrayList< int[] > vecinosPendientes/*, ArrayList< Integer > marcados */) 
 	{
 		int indice = 0;
 		int menorPeso = vecinosPendientes.get( 0 )[ 2 ];
