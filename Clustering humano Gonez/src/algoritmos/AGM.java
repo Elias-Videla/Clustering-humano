@@ -12,7 +12,6 @@ public class AGM implements Serializable
 	//------------------------------------------------------------------------------------------------
 	public static Grafo arbolGeneradorMinimo( Grafo grafo ) 
 	{
-		//creo que primero tengo que preguntar si es conexo
 		if( !BFS.esConexo( grafo ) )
 			throw new IllegalArgumentException( "El grafo no es conexo" );
 		
@@ -24,11 +23,11 @@ public class AGM implements Serializable
 		
 		marcados.add( 0 );
 		
-		vecinosPendientes = agregarVecinosPendientes( grafo, 0, vecinosPendientes/*, marcados */);
+		vecinosPendientes = agregarVecinosPendientes( grafo, 0, vecinosPendientes );
 		
 		for( int i = 1; i < grafo.tamano(); i++ ) 
 		{
-			int indiceDelArrayPendientes = buscarVecinoMenorPeso( vecinosPendientes/*, marcados */); 
+			int indiceDelArrayPendientes = buscarVecinoMenorPeso( vecinosPendientes ); 
 																	
 			int vertice_i = vecinosPendientes.get( indiceDelArrayPendientes )[ 0 ];
 			int vertice_j = vecinosPendientes.get( indiceDelArrayPendientes )[ 1 ];
@@ -38,8 +37,8 @@ public class AGM implements Serializable
 			
 			marcados.add( vecinosPendientes.get( indiceDelArrayPendientes )[0] );
 			 
-			vecinosPendientes = agregarVecinosPendientes( grafo, vertice_i, vecinosPendientes/*, marcados */);
-			vecinosPendientes = eliminarMarcados( /*grafo,*/ vecinosPendientes, marcados );
+			vecinosPendientes = agregarVecinosPendientes( grafo, vertice_i, vecinosPendientes );
+			vecinosPendientes = eliminarMarcados( vecinosPendientes, marcados );
 		}
 		
 		return grafoAGM; 
@@ -48,7 +47,7 @@ public class AGM implements Serializable
 	//------------------------------------------------------------------------------------------------
 	
 
-	private static ArrayList< int[] > agregarVecinosPendientes( Grafo grafo, int vertice, ArrayList< int[] > vPendientes/*, ArrayList< Integer > marcados */) 
+	private static ArrayList< int[] > agregarVecinosPendientes( Grafo grafo, int vertice, ArrayList< int[] > vPendientes ) 
 	{
 		for( Integer it : grafo.vecinos( vertice ) ) 
 		{
@@ -67,7 +66,7 @@ public class AGM implements Serializable
 	
 	
 	
-	private static ArrayList< int[] > eliminarMarcados( /*Grafo grafo,*/ ArrayList< int[] > vecinosPendientes, ArrayList< Integer > marcados )
+	private static ArrayList< int[] > eliminarMarcados( ArrayList< int[] > vecinosPendientes, ArrayList< Integer > marcados )
 	{
 		ArrayList< int[] > listaSinMarcados = new ArrayList< int[] >();
 		
@@ -87,7 +86,7 @@ public class AGM implements Serializable
 	
 	
 	
-	private static int buscarVecinoMenorPeso( ArrayList< int[] > vecinosPendientes/*, ArrayList< Integer > marcados */) 
+	private static int buscarVecinoMenorPeso( ArrayList< int[] > vecinosPendientes ) 
 	{
 		int indice = 0;
 		int menorPeso = vecinosPendientes.get( 0 )[ 2 ];
@@ -97,8 +96,6 @@ public class AGM implements Serializable
 		
 		for( int i = 0; i < vecinosPendientes.size()-1; i++ ) 
 		{
-			//si hay dos iguales toma el ultimo porque recorre toda la lista y se van pisando
-			//si quiero el primero solamente tengo que porner < y no <=
 			if( vecinosPendientes.get( i )[ 2 ] <= vecinosPendientes.get( i+1 )[ 2 ]) 
 			{
 					if( vecinosPendientes.get( i )[ 2 ] <= menorPeso )
