@@ -107,6 +107,8 @@ Contiene 4 listas de personas con diferentes tópicos a modo ejemplo que se pued
 
 ## Logros
 
+Durante el proyecto pude profundizar los conceptos de algoritmos de búsqueda con Breadth-First Search (BFS) y conceptos de teoría de grafos con AGM (Árbol Generador Mínimo). También pude mantener las buenas prácticas de testing con pruebas unitarias y un código limpio. Además, pude desarrollar en tiempo y forma el algoritmo requerido para recorrer un grafo sin ciclos y con aristas de valor mínimo.
+
 ## Instalación
 
 ```shell
