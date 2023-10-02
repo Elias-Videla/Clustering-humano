@@ -41,7 +41,7 @@ En este paquete se encuentran los algoritmos relacionados con la reorganización
 
 (Breadth-first search). Esta clase tiene dos funciones que obtienen un resultado a partir del recorrido del grafo.
 
-- esConexo(Grafo grafo): Verfica que el grafo sea conexo. Un grafo es conexo si existe al menos un camino de un vértica a otro.
+- esConexo(Grafo grafo): Verifica que el grafo sea conexo. Un grafo es conexo si existe al menos un camino de un vértice a otro.
 - alcanzables(Grafo grafo, int origen): Devuelve una lista con el camino de los vértices que se pueden alcanzar a partir del origen ingresado.
 
 ### Paquete clustering
@@ -103,7 +103,7 @@ Interfaz para cargar de forma personalizada los datos de las personas.
 
 ### Carga_automatica
 
-Contiene 4 listas de personas con diferentes tópicos a modo ejemplo que se pueden seleccionar para ver sus datos y luego poder mostrar los dos grupos resultantes.
+Contiene 4 listas de personas con diferentes tópicos a modo de ejemplo que se pueden seleccionar para ver sus datos y luego poder mostrar los dos grupos resultantes.
 
 ## Logros
 
